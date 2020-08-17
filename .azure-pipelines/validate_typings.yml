@@ -2,8 +2,6 @@
 
 trigger:
 - none
-pr:
-- dtslint
 
 pool:
   vmImage: 'ubuntu-latest'
