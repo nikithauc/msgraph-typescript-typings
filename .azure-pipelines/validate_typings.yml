@@ -3,9 +3,10 @@
 trigger:
 - none
 
-on:
-  pr:
-  branches: [dtslint]
+pr:
+-dtslint
+-master
+-v1.0/pipeline/*
   
 pool:
   vmImage: 'ubuntu-latest'
