@@ -38,7 +38,7 @@ jobs:
         BASE: master
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -l "$LABELS"
+        bin/hub pull-request 
         echo "made"
 # References
 # [0] https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables
