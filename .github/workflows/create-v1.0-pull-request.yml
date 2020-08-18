@@ -11,7 +11,7 @@ name: "create pull request"
 # events but only for branches with the following branch spec: "v1.0/pipelinebuild/*"
 on: 
   push:
-    branches: [dtslint]
+    branches: dtslint
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "create-pull-request"
