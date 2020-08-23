@@ -19,6 +19,8 @@ steps:
       $releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases"
 
       Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue
+      $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
+
       if ($releasesJSON.Count -eq 0) {
           Write-Host "Unable to get releases list with '$($releasesUrl)'" -ForegroundColor Red;
           Write-Host "NOTE: This Script cannot handle the first release" -ForegroundColor Cyan;
