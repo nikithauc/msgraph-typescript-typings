@@ -15,13 +15,13 @@ steps:
   inputs:
     targetType: inline
     script: | 
-      Write-Host "Hello, world!""
-      $releasesUrl = "https://api.github.com/repos/msgraph-typescript-typings/releases";
+      Write-Host "Hello, world!"
+      $releasesUrl = "https://api.github.com/repos/msgraph-typescript-typings/releases"
 
-      Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue;
-      $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
+      Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue
+      $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get
 
-      echo $releaseJSON
+        Write-Host "'$($releaseJSON)' $releaseJSON"
   displayName: 'Check release'
   
 - script: |
