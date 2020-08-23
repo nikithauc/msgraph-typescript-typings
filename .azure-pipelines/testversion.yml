@@ -14,17 +14,17 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: inline
-  script: | 
-    Write-Host "Hello, world!""
-    $releasesUrl = "https://api.github.com/repos/msgraph-typescript-typings/releases";
+    script: | 
+      Write-Host "Hello, world!""
+      $releasesUrl = "https://api.github.com/repos/msgraph-typescript-typings/releases";
 
-    Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue;
-    $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
+      Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue;
+      $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
 
-    echo $releaseJSON
+      echo $releaseJSON
   displayName: 'Check release'
   
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
