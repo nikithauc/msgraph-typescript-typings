@@ -77,8 +77,7 @@ steps:
       Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($newVersionStr)";
 
       Write-Host "Updated new version in global variable" -ForegroundColor Green;
-        displayName: 'Check release'
-
+      
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
