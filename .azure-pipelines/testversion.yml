@@ -9,17 +9,19 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+
 steps:
-- script: | 
-    echo Hello, world!
+- task: PowerShell@2
+  script: | 
+    Write-Host "Hello, world!""
     $releasesUrl = "https://api.github.com/repos/msgraph-typescript-typings/releases";
 
     Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue;
     $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
 
     echo $releaseJSON
-  displayName: 'Run a one-line script'
-
+  displayName: 'Check release'
+  
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
