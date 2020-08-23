@@ -78,6 +78,11 @@ steps:
 
       Write-Host "Updated new version in global variable" -ForegroundColor Green;
       
+- task: NodeTool@0 
+  inputs:
+     versionSpec: 12
+     script: npm install 
+     
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
