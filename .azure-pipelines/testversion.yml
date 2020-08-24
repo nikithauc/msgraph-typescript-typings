@@ -128,7 +128,7 @@ steps:
     command: install
     
 - task: Npm@1
-  displayName: 'Update new production version in files $(newVersionStr)'
+  displayName: 'Update new production version in files '$($newVersionStr)''
   inputs:
     workingDir: scripts
     verbose: false
