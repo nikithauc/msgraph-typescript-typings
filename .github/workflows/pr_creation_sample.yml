@@ -1,7 +1,7 @@
 name: "auto generate pull request"
 on: 
     push:
-        branches: test_auto2
+        branches: [test_auto2, test_auto3]
     
 jobs:
     build:
