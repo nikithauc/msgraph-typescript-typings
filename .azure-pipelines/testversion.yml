@@ -124,7 +124,8 @@ steps:
   displayName: 'Install packges in the scripts folder'
   inputs:
     workingDir: scripts
-    verbose: false
+    verbose: true
+    command: install
     
  - task: Npm@1
    displayName: 'Update new production version in files'
