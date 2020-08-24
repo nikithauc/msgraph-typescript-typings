@@ -108,13 +108,13 @@ steps:
       Write-Host "Updated new version in global variable" -ForegroundColor Green;
       
 - task: NodeTool@0 
-  displayName: Update to  Version '$newVersionStr'
+  displayName: Update to  Version $(newVersionStr)
   inputs:
      versionSpec: 12
      workingDir: scripts
      script: |
       npm install 
-      npm run update:version -- --newVersion= '$newVersionStr'
+      npm run update:version -- --newVersion= $(newVersionStr)
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
