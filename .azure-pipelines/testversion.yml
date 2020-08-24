@@ -67,7 +67,6 @@ steps:
       Write-Host "About to add files....." -ForegroundColor Green
       git add -A | Write-Host
       git commit -m "Commiting test" | Write-Host
-      }
       
       Write-Host "Added and committed all files." -ForegroundColor Green
 - task: PowerShell@2
@@ -78,7 +77,7 @@ steps:
     targetType: inline
     # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
-      git push --set-upstream origin "testingVersion" | Write-Host
+      git push origin "testingVersion" | Write-Host
       Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
   enabled: true
   
