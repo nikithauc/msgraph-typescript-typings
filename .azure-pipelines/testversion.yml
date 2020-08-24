@@ -9,7 +9,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-
+variables:
+  newVersionStr: ""
 steps:
 - task: PowerShell@2
   inputs:
@@ -70,7 +71,7 @@ steps:
       $versionArr[2] = $newPatchVersion;
 
       $newVersionStr = $versionArr -join ".";
-
+        
       Write-Host "Current version is '$($latestReleaseVersionStr)'" -ForegroundColor Blue;
       Write-Host "New calculated version is '$($newVersionStr)'" -ForegroundColor Green;
 
@@ -81,8 +82,9 @@ steps:
 - task: NodeTool@0 
   inputs:
      versionSpec: 12
+     workingDir:scripts
      script: npm install 
-     
+     customCommand: 'run update:version -- --newVersion="$(newVersionStr)"'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
