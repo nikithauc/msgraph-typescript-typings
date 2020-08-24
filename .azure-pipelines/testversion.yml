@@ -62,7 +62,7 @@ steps:
     GIT_REDIRECT_STDERR: "2>&1"
   inputs:
     targetType: inline
-    workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+    # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
       Write-Host "About to add files....." -ForegroundColor Green
       git add -A | Write-Host
@@ -76,7 +76,7 @@ steps:
     GIT_REDIRECT_STDERR: "2>&1"
   inputs:
     targetType: inline
-    workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+    # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
       git push --set-upstream origin "testingVersion" | Write-Host
       Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
