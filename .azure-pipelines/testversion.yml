@@ -47,7 +47,7 @@ steps:
       Write-Host "Hello, world!"
       $releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases"
 
-      Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue
+      Write-Host "'$newVersionStr' Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue
       $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
 
       if ($releasesJSON.Count -eq 0) {
@@ -114,7 +114,7 @@ steps:
      workingDir: scripts
      script: |
       npm install 
-      npm run update:version -- --newVersion= $(newVersionStr)
+      npm run update:version -- --newVersion= 1.17.0
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
