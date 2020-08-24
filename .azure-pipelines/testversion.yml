@@ -163,6 +163,8 @@ steps:
     targetType: inline
     # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
+      git status
+      git diff
       git push origin "testingVersion" | Write-Host
       Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
   enabled: true
