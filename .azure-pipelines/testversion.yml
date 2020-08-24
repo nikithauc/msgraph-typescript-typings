@@ -37,7 +37,7 @@ steps:
     # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
       git config user.email "nikithauc@gmail.com"
-      git config user.name "nikithauc"
+      git config user.name "nikitha"
       
 - task: PowerShell@2
   inputs:
