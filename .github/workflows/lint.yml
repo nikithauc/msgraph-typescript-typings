@@ -7,5 +7,5 @@ jobs:
   build:
     runs-on: ubuntu-16.04
     steps:
-      - name: Test working
-        run: echo "see"
+      - name: Test liniting
+        run: echo "hello world lint"
