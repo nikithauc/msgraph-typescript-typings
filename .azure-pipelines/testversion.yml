@@ -44,12 +44,13 @@ steps:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
   
 - task: NodeTool@0 
-  displayName: Update Version
+  displayName: Update to  Version "$(newVersionStr)"
   inputs:
      versionSpec: 12
      workingDir: scripts
-     script: npm install 
-     customCommand: 'run update:version -- --newVersion="$(newVersionStr)"'
+     script: |
+      npm install 
+      npm run update:version -- --newVersion="$(newVersionStr)"
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
