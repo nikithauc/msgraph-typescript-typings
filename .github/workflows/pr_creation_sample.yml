@@ -1,10 +1,10 @@
 name: "auto generate pull request"
-on:
-  push:
-    branches: test_auto
+on: push
+#   push:
+#     branches: test_auto
     
 jobs:
-  one:
+  build:
     runs-on: ubuntu-16.04
     steps:
       - name: Test working
