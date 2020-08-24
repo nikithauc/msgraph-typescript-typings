@@ -13,18 +13,18 @@ variables:
   newVersionStr: ""
 steps:
 
-- task: PowerShell@2
-  displayName: 'Git: checkout master'
-  inputs:
-    targetType: inline
-    workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-    script: |
-      git checkout master | Write-Host
+# - task: PowerShell@2
+#   displayName: 'Git: checkout master'
+#   inputs:
+#     targetType: inline
+#     # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+#     script: |
+#       git checkout master | Write-Host
 - task: PowerShell@2
   displayName: 'Git: branch from master named with the build id: $(Build.BuildId)'
   inputs:
     targetType: inline
-    workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+    #workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
       
       Write-Host "The new branch name will be: $env:branchName"
