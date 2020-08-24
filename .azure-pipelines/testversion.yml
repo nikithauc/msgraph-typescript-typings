@@ -124,13 +124,14 @@ steps:
   displayName: 'Install packges in the scripts folder'
   inputs:
     workingDir: scripts
-    verbose: true
+    verbose: false
     command: install
     
 - task: Npm@1
   displayName: 'Update new production version in files'
   inputs:
-    workingDir: '$(System.DefaultWorkingDirectory)/scripts'
+    workingDir: scripts
+    verbose: false
     command: custom
     customCommand: 'run update:version -- --newVersion= "1.17.0"'
     
