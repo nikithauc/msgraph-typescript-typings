@@ -5,7 +5,8 @@
   "license": "MIT",
   "types": "microsoft-graph.d.ts",
   "scripts": {
-    "test": "tsc && mocha spec/**.ts"
+    "test": "tsc && mocha spec/**.ts",
+    "dtslint":"tsc"
   },
   "typescript": {
     "definition": "microsoft-graph.d.ts"
