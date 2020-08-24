@@ -130,7 +130,7 @@ steps:
 - task: Npm@1
   displayName: 'Update new production version in files'
   inputs:
-    workingDir: scripts
+    workingDir: '$(System.DefaultWorkingDirectory)/scripts'
     command: custom
     customCommand: 'run update:version -- --newVersion= "1.17.0"'
     
