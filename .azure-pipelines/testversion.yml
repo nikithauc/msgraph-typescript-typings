@@ -127,12 +127,11 @@ steps:
     verbose: true
     command: install
     
- - task: Npm@1
-   displayName: 'Update new production version in files'
-   inputs:
+- task: Npm@1
+    displayName: 'Update new production version in files'
+    inputs:
     command: custom
     workingDir: scripts
-    verbose: false
     customCommand: 'run update:version -- --newVersion= 1.17.0
     
 - task: PowerShell@2
