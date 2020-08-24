@@ -30,14 +30,14 @@ steps:
       Write-Host "The new branch name will be: $env:branchName"
       git checkout -B "testingVersion" | Write-Host
       
-# - task: PowerShell@2
-#   displayName: 'Git: set user config'
-#   inputs:
-#     targetType: inline
-#     workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-#     script: |
-#       git config user.email "GraphTooling@service.microsoft.com"
-#       git config user.name "Microsoft Graph DevX Tooling"
+- task: PowerShell@2
+  displayName: 'Git: set user config'
+  inputs:
+    targetType: inline
+    # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+    script: |
+      git config user.email "nikithauc@gmail.com"
+      git config user.name "nikithauc"
       
 - task: PowerShell@2
   inputs:
