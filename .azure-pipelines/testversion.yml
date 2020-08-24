@@ -150,6 +150,8 @@ steps:
     targetType: inline
     # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
     script: |
+      git status
+      git diff
       Write-Host "About to add files....." -ForegroundColor Green
       git add -A | Write-Host
       git commit -m "Commiting test" | Write-Host
