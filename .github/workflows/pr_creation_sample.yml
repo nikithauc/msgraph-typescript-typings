@@ -7,7 +7,7 @@ jobs:
   one:
     runs-on: ubuntu-16.04
     steps:
-      - name: Dump GitHub context
+      - name: Test working
         run: echo "see"
      
   # This workflow contains a single job called "create-pull-request"
