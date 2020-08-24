@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - name: Test pipeline workflow
-        run: echo "works"
+        run: echo "works test"
 
   # This workflow contains a single job called "create-pull-request"
   create-pull-request:
