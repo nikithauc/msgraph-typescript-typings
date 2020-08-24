@@ -47,7 +47,7 @@ steps:
       Write-Host "Hello, world!"
       $releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases"
 
-      Write-Host "'$newVersionStr' Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue
+      Write-Host "$(newVersionStr) Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue
       $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
 
       if ($releasesJSON.Count -eq 0) {
@@ -128,7 +128,7 @@ steps:
     command: install
     
 - task: Npm@1
-  displayName: 'Update new production version in files'
+  displayName: 'Update new production version in files $(newVersionStr)'
   inputs:
     workingDir: scripts
     verbose: false
