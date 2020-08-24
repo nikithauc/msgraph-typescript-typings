@@ -4,25 +4,25 @@ on:
         branches: test_auto2
     
 jobs:
-  build:
-    runs-on: ubuntu-16.04
-    steps:
-      - name: Test working
-        run: echo "see"
+    build:
+        runs-on: ubuntu-16.04
+        steps:
+          - name: Test working
+            run: echo "see"
      
   # This workflow contains a single job called "create-pull-request"
-#   create-pull-request:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Create PR using the GitHub REST API via hub
-#         shell: bash
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           MESSAGE_TITLE: Auto generated pr title
-#           MESSAGE_BODY: "Auto generated pr body"
-#           LABELS: generated
-#           BASE: master
-#         run: |
-#           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-#           bin/hub pull-request -b "$BASE" -h "$GITHUB_REF" -m "$MESSAGE_TITLE" -m "$MESSAGE_BODY" -l "$LABELS"
+    create-pull-request:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Create PR using the GitHub REST API via hub
+          shell: bash
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            MESSAGE_TITLE: Auto generated pr title
+            MESSAGE_BODY: "Auto generated pr body"
+            LABELS: generated
+            BASE: master
+            run: |
+              curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+              bin/hub pull-request -b "$BASE" -h "$GITHUB_REF" -m "$MESSAGE_TITLE" -m "$MESSAGE_BODY" -l "$LABELS"
