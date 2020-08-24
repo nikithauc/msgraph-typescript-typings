@@ -82,7 +82,7 @@ steps:
 - task: NodeTool@0 
   inputs:
      versionSpec: 12
-     workingDir:scripts
+     workingDir: scripts
      script: npm install 
      customCommand: 'run update:version -- --newVersion="$(newVersionStr)"'
 - script: |
