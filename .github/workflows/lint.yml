@@ -1,0 +1,11 @@
+name: "testing linting"
+on:
+ pull_request:
+   types: [opened,reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Test liniting
+        run: echo "hello world lint"
