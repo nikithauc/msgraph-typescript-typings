@@ -1,15 +1,15 @@
-Param(
-    [string]$owner,
-    [string]$repo
-)
+# Param(
+#     [string]$owner,
+#     [string]$repo
+# )
 
 Write-Host "Calculating new Production Version:" -ForegroundColor Magenta;
 
-$newVersionStr;
+# $newVersionStr;
 
-$releasesUrl = "https://api.github.com/repos/$($owner)/$($repo)/releases";
+$releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases";
 
-Write-Host "Getting list of releases with '$($releasesUrl)'" -ForegroundColor Blue;
+Write-Host "Getting list of releases from external file with '$($releasesUrl)'" -ForegroundColor Blue;
 $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
 
 if ($releasesJSON.Count -eq 0) {
