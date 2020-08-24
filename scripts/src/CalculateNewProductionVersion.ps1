@@ -9,7 +9,7 @@ Write-Host "Calculating new Production Version:" -ForegroundColor Magenta;
 
 $releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases";
 
-Write-Host "Getting list of releases from external file with '$($releasesUrl)'" -ForegroundColor Blue;
+Write-Host "'$env:newVersionStr'Getting list of releases from external file with '$($releasesUrl)'" -ForegroundColor Blue;
 $releasesJSON = Invoke-RestMethod -Uri $releasesUrl -Method Get;
 
 if ($releasesJSON.Count -eq 0) {
@@ -60,11 +60,11 @@ $newPatchVersion = 0;
 $versionArr[1] = $newMinorVersion;
 $versionArr[2] = $newPatchVersion;
 
-$newVersionStr = $versionArr -join ".";
+$env:newVersionStr = $versionArr -join ".";
 
 Write-Host "Current version is '$($latestReleaseVersionStr)'" -ForegroundColor Blue;
 Write-Host "New calculated version is '$($newVersionStr)'" -ForegroundColor Green;
 
-Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($newVersionStr)";
+Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($env:newVersionStr)";
 
 Write-Host "Updated new version in global variable" -ForegroundColor Green;
