@@ -128,11 +128,18 @@ steps:
     command: install
     
 - task: Npm@1
-    displayName: 'Update new production version in files'
-    inputs:
-    command: custom
+  displayName: 'Update new production version in files'
+  inputs:
     workingDir: scripts
-    customCommand: 'run update:version -- --newVersion= 1.17.0
+    command: custom
+    customCommand: 'run update:version -- --newVersion= 1.17.0'
+    
+# - task: Npm@1
+#     displayName: 'Update new production version in files'
+#     inputs:
+#     command: custom
+#     workingDir: scripts
+#     customCommand: 'run update:version -- --newVersion= 1.17.0
     
 - task: PowerShell@2
   displayName: 'Git: stage and commit generated files'
