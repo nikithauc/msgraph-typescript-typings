@@ -5,8 +5,9 @@
 
 trigger:
   branches:
-    - master
-  path:
+    include:
+      - master
+  paths:
     include:
     - index.d.ts
 
