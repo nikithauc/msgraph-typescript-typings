@@ -4,7 +4,11 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  branches:
+    - master
+  path:
+    include:
+    - index.d.ts
 
 pool:
   vmImage: 'ubuntu-latest'
