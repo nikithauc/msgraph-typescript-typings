@@ -121,9 +121,10 @@ steps:
 #   displayName: 'Run a multi-line script'
 
 - task: NodeTool@0 
+  displayName: 'Calculate new version'
   inputs:
     versionSpec: 12
-  script: |
+- script: |
           npm install
           npm run update:version -- --newVersion="$(NEW_VERSION_STRING)"'
           
