@@ -30,72 +30,72 @@ jobs:
       # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
       script: |
         git checkout master | Write-Host
-  - task: PowerShell@2
-    displayName: 'Git: branch from master named with the build id: $(Build.BuildId)'
-    inputs:
-      targetType: inline
-      #workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-      script: |
-        Write-Host "The new branch name will be: $env:branchName"
-        git checkout -B "testingVersion" | Write-Host
+#   - task: PowerShell@2
+#     displayName: 'Git: branch from master named with the build id: $(Build.BuildId)'
+#     inputs:
+#       targetType: inline
+#       #workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+#       script: |
+#         Write-Host "The new branch name will be: $env:branchName"
+#         git checkout -B "testingVersion" | Write-Host
 
-  - task: PowerShell@2
-    displayName: 'Git: set user config'
-    inputs:
-      targetType: inline
-      # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-      script: |
-        git config user.email "nikithauc@gmail.com"
-        git config user.name "nikitha"
+#   - task: PowerShell@2
+#     displayName: 'Git: set user config'
+#     inputs:
+#       targetType: inline
+#       # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+#       script: |
+#         git config user.email "nikithauc@gmail.com"
+#         git config user.name "nikitha"
 
-  - task: PowerShell@2
-    inputs:
-      filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
+#   - task: PowerShell@2
+#     inputs:
+#       filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
-  - task: Npm@1
-    displayName: 'Install packges in the scripts folder'
-    inputs:
-      workingDir: scripts
-      verbose: false
-      command: install
+#   - task: Npm@1
+#     displayName: 'Install packges in the scripts folder'
+#     inputs:
+#       workingDir: scripts
+#       verbose: false
+#       command: install
       
-  - task: Npm@1
-    displayName: 'Update new production version in files "$(NEW_VERSION_STRING)"'
-    inputs:
-      workingDir: scripts
-      verbose: false
-      command: custom
-      customCommand: 'run update:version -- --newVersion="$(NEW_VERSION_STRING)"'
+#   - task: Npm@1
+#     displayName: 'Update new production version in files "$(NEW_VERSION_STRING)"'
+#     inputs:
+#       workingDir: scripts
+#       verbose: false
+#       command: custom
+#       customCommand: 'run update:version -- --newVersion="$(NEW_VERSION_STRING)"'
       
-  - task: PowerShell@2
-    displayName: 'Git: stage and commit generated files'
-    env: # [2]
-      GIT_REDIRECT_STDERR: "2>&1"
-    inputs:
-      targetType: inline
-      # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-      script: |
-        git status
-        git diff
-        Write-Host "About to add files....." -ForegroundColor Green
-        git add -A | Write-Host
-        git commit -m "Commiting test" | Write-Host
+#   - task: PowerShell@2
+#     displayName: 'Git: stage and commit generated files'
+#     env: # [2]
+#       GIT_REDIRECT_STDERR: "2>&1"
+#     inputs:
+#       targetType: inline
+#       # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+#       script: |
+#         git status
+#         git diff
+#         Write-Host "About to add files....." -ForegroundColor Green
+#         git add -A | Write-Host
+#         git commit -m "Commiting test" | Write-Host
         
-        Write-Host "Added and committed all files." -ForegroundColor Green
+#         Write-Host "Added and committed all files." -ForegroundColor Green
 
-  - task: PowerShell@2
-    displayName: 'Git: push updates'
-    env: # [2]
-      GIT_REDIRECT_STDERR: "2>&1"
-    inputs:
-      targetType: inline
-      # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-      script: |
-        git status
-        git diff
-        git push origin "testingVersion" | Write-Host
-        Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
-    enabled: true
+#   - task: PowerShell@2
+#     displayName: 'Git: push updates'
+#     env: # [2]
+#       GIT_REDIRECT_STDERR: "2>&1"
+#     inputs:
+#       targetType: inline
+#       # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+#       script: |
+#         git status
+#         git diff
+#         git push origin "testingVersion" | Write-Host
+#         Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
+#     enabled: true
 
 # job:
 #   - task: CopyFiles@2
