@@ -20,8 +20,8 @@ variables:
 # test artifact
 
 # end test artifact 
-stages:
-- stage: calculateVersion
+jobs:
+- job: calculateVersion
   steps:
   - task: PowerShell@2
     displayName: 'Git: checkout master'
@@ -51,25 +51,25 @@ stages:
   - task: PowerShell@2
     inputs:
       filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
-- stage: updateVersion
+- job: updateVersion
 #   variables: 
 #     NEW_VERSION_STRING: $[ dependencies.calculateVersion.outputs['NEW_VERSION_STRING'] ]
 #   dependsOn: calculateVersion
   steps:
-  - task: Npm@1
-    displayName: 'Install packges in the scripts folder'
-    inputs:
-      workingDir: scripts
-      verbose: false
-      command: install
+#   - task: Npm@1
+#     displayName: 'Install packges in the scripts folder'
+#     inputs:
+#       workingDir: scripts
+#       verbose: false
+#       command: install
 
-  - task: Npm@1
-    displayName: 'Update new production version in files "$(NEW_VERSION_STRING)"'
-    inputs:
-      workingDir: scripts
-      verbose: false
-      command: custom
-      customCommand: 'run update:version -- --newVersion="$(NEW_VERSION_STRING)"'
+#   - task: Npm@1
+#     displayName: 'Update new production version in files "$(NEW_VERSION_STRING)"'
+#     inputs:
+#       workingDir: scripts
+#       verbose: false
+#       command: custom
+#       customCommand: 'run update:version -- --newVersion="$(NEW_VERSION_STRING)"'
       
   - task: PowerShell@2
     displayName: 'Git: stage and commit generated files'
@@ -79,6 +79,7 @@ stages:
       targetType: inline
       # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
       script: |
+        git branch
         git status
         git diff
         Write-Host "About to add files....." -ForegroundColor Green
