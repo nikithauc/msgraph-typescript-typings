@@ -82,6 +82,7 @@ jobs:
         git commit -m "Commiting test" | Write-Host
         
         Write-Host "Added and committed all files." -ForegroundColor Green
+
   - task: PowerShell@2
     displayName: 'Git: push updates'
     env: # [2]
