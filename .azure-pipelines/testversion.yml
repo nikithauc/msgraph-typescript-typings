@@ -21,7 +21,7 @@ variables:
 
 # end test artifact 
 jobs:
-- job: 'update version'
+- job: updateVersion
   steps:
   - task: PowerShell@2
     displayName: 'Git: checkout master'
