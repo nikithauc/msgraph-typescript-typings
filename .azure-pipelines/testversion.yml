@@ -67,7 +67,7 @@ jobs:
       workingDir: scripts
       verbose: false
       command: custom
-      customCommand: 'run update:version -- --newVersion="$(dependencies.job_deploy_infrastructure.outputs['NEW_VERSION_STRING'])"
+      customCommand: 'run update:version -- --newVersion="$(dependencies.job_deploy_infrastructure.outputs['NEW_VERSION_STRING'])"'
       
   - task: PowerShell@2
     displayName: 'Git: stage and commit generated files'
