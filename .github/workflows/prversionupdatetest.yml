@@ -13,6 +13,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
+    # The type of runner that the job will run on
     runs-on: windows-2019
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -20,7 +21,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-     # Runs a single command using the runners shell
+      # Runs a single command using the runners shell
       - name: Test external file run script
         run: .\scripts\src\CalculateNewProductionVersion.ps1
         shell: powershell
@@ -34,8 +35,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: |
-          npm install 
-          npm run update:version -- --newVersion=${{NEW_VERSION_STRING}}
-        working-directory: ./scripts
+      - run: npm install
       
