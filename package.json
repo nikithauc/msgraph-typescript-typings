@@ -3,7 +3,7 @@
   "description": "Types for Microsoft Graph objects",
   "version": "1.16.0",
   "license": "MIT",
-  "types": "microsoft-graph.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "test": "tsc && mocha spec/**.ts"
   },
