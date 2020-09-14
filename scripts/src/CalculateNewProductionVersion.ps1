@@ -65,6 +65,6 @@ $env:newVersionStr = $versionArr -join ".";
 Write-Host "Current version is '$($latestReleaseVersionStr)'" -ForegroundColor Blue;
 Write-Host "New calculated version is '$($newVersionStr)'" -ForegroundColor Green;
 
-Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING;isOutput=true;]$($env:newVersionStr)";
+Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($env:newVersionStr)";
 
 Write-Host "Updated new version in global variable" -ForegroundColor Green;
