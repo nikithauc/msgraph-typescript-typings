@@ -37,5 +37,6 @@ jobs:
         with:
           node-version: 12
       - run: npm install
+        working-directory: ./scripts
 #           npm install
 #           npm run update:version -- --newVersion="${{NEW_VERSION_STRING}}
