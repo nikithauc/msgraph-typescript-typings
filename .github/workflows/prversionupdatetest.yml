@@ -19,6 +19,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - env:
+          newVersionStr: ""
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
@@ -38,7 +40,7 @@ jobs:
           node-version: 12
       - run: |
           npm install
-          npm run update:version -- --newVersion=$NEW_VERSION_STRING
+          npm run update:version -- --newVersion=$newVersionStr
         working-directory: ./scripts
 #           npm install
 #           npm run update:version -- --newVersion="${{NEW_VERSION_STRING}}
