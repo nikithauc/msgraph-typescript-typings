@@ -7,8 +7,6 @@ name: CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,7 +20,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+     # Runs a single command using the runners shell
       - name: Test external file run script
         run: .\scripts\src\CalculateNewProductionVersion.ps1
         shell: powershell
@@ -32,7 +30,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
@@ -40,5 +37,5 @@ jobs:
       - run: |
           npm install 
           npm run update:version -- --newVersion=${{NEW_VERSION_STRING}}
-          
+        working-directory: ./scripts
       
