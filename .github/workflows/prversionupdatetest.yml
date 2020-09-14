@@ -36,5 +36,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm install
-      - run: npm run update:version -- --newVersion="${{NEW_VERSION_STRING}}
+      - name: Install and update
+        run: |
+          npm install
+          npm run update:version -- --newVersion="${{NEW_VERSION_STRING}}
