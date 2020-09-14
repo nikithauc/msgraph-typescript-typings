@@ -32,11 +32,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Install and update
-        run: |
-          npm install
-          npm run update:version -- --newVersion="${{NEW_VERSION_STRING}}
+#       - name: Use Node.js 12
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
+#       - name: Install and update
+#         run: |
+#           npm install
+#           npm run update:version -- --newVersion="${{NEW_VERSION_STRING}}
