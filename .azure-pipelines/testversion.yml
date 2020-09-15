@@ -14,8 +14,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-# variables:
-#   newVersionStr: ""
+variables:
+  newVersionStr: "1.9.4"
 
 # test artifact
 
@@ -47,7 +47,7 @@ steps:
       git config user.name "nikitha"
 
 - task: PowerShell@2
-  condition: eq('${{ variables.newVersionStr }}', '')
+  condition: false #eq('${{ variables.newVersionStr }}', '')
   inputs:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
@@ -59,12 +59,12 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files ${{ variables.newVersionStr }}'
+  displayName: 'Update new production version in files ${{ newVersionStr }}'
   inputs:
     workingDir: scripts
     verbose: false
     command: custom
-    customCommand: 'run update:version -- --newVersion=${{ variables.newVersionStr }}'
+    customCommand: 'run update:version -- --newVersion=${{ newVersionStr }}'
 
 - task: PowerShell@2
   displayName: 'Git: stage and commit generated files'
