@@ -14,8 +14,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  newVersionStr: "1.9.4"
+# variables:
+#   newVersionStr: "1.9.4"
 
 # test artifact
 
