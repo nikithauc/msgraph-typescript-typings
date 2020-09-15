@@ -20,7 +20,6 @@ variables:
 # test artifact
 
 # end test artifact 
-job:
 steps:
 - task: PowerShell@2
   displayName: 'Git: checkout master'
