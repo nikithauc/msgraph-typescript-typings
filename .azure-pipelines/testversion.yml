@@ -14,8 +14,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-# variables:
-#   newVersionStr: "1.9.4"
+variables:
+  newVersionStr: "1.9.4"
 
 # test artifact
 
@@ -47,7 +47,7 @@ steps:
       git config user.name "nikitha"
 
 - task: PowerShell@2
- # condition: false #eq('${{ variables.newVersionStr }}', '')
+  condition: eq('${{ variables.newVersionStr }}', '')
   inputs:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
