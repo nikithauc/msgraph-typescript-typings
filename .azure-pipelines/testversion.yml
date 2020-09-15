@@ -47,7 +47,7 @@ steps:
       git config user.name "nikitha"
 
 - task: PowerShell@2
-  condition: or(eq('${{ variables.newVersionStr }}', null), eq('${{ variables.newVersionStr }}', ''))
+  condition: eq('${{ variables.newVersionStr }}, '')
   inputs:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
@@ -59,7 +59,7 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files $(NEW_VERSION_STRING)'
+  displayName: 'Update new production version in files $(env:newVersionStr)'
   inputs:
     workingDir: scripts
     verbose: false
