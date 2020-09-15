@@ -15,7 +15,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  newVersionStr: $[variables.newVersionStr]
+  newVersionStr: "$(newVersionStr)"
 
 # test artifact
 
