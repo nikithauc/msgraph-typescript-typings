@@ -14,8 +14,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  newVersionStr: ""
+# variables:
+#   newVersionStr: ""
 
 # test artifact
 
@@ -64,7 +64,7 @@ steps:
     workingDir: scripts
     verbose: false
     command: custom
-    customCommand: 'run update:version -- --newVersion=$(NEW_VERSION_STRING)'
+    customCommand: 'run update:version -- --newVersion=${{ variables.newVersionStr }}'
 
 - task: PowerShell@2
   displayName: 'Git: stage and commit generated files'
