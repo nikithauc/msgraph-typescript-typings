@@ -47,6 +47,7 @@ steps:
       git config user.name "nikitha"
 
 - task: PowerShell@2
+  condition: or(eq('${{ NEW_VERSION_STRING }}', null), eq('${{ NEW_VERSION_STRING }}', ''))
   inputs:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
@@ -82,19 +83,19 @@ steps:
 
       Write-Host "Added and committed all files." -ForegroundColor Green
 
-- task: PowerShell@2
-  displayName: 'Git: push updates'
-  env: # [2]
-    GIT_REDIRECT_STDERR: "2>&1"
-  inputs:
-    targetType: inline
-    # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
-    script: |
-      git status
-      git diff
-      git push origin "testingVersion" | Write-Host
-      Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
-  enabled: true
+# - task: PowerShell@2
+#   displayName: 'Git: push updates'
+#   env: # [2]
+#     GIT_REDIRECT_STDERR: "2>&1"
+#   inputs:
+#     targetType: inline
+#     # workingDirectory: '$(Build.SourcesDirectory)/msgraph-typescript-typings'
+#     script: |
+#       git status
+#       git diff
+#       git push origin "testingVersion" | Write-Host
+#       Write-Host "Pushed the results of the build to the testingVersion branch." -ForegroundColor Green
+#   enabled: true
 
 # job:
 #   - task: CopyFiles@2
