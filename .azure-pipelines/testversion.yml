@@ -14,8 +14,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  newVersionStr: "1.9.4"
+# variables:
+#   newVersionStr: "1.9.4"
 
 # test artifact
 
@@ -59,7 +59,7 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files ${{ variables.newVersionStr }}  ${{ parameters.newVersionStr }}'
+  displayName: 'Update new production version in files ${{ variables.newVersionStr }}'
   inputs:
     workingDir: scripts
     verbose: false
