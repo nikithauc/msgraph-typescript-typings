@@ -59,7 +59,7 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files $(env:newVersionStr)'
+  displayName: 'Update new production version in files ${{ variables.newVersionStr }}'
   inputs:
     workingDir: scripts
     verbose: false
