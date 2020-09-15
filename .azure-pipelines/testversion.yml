@@ -47,7 +47,7 @@ steps:
       git config user.name "nikitha"
 
 - task: PowerShell@2
-  condition: or(eq('${{ NEW_VERSION_STRING }}', null), eq('${{ NEW_VERSION_STRING }}', ''))
+  condition: or(eq('${{ newVersionStr }}', null), eq('${{ newVersionStr }}', ''))
   inputs:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
