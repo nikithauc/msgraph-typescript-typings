@@ -15,7 +15,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  newVersionStr: "1.9.4"
+  newVersionStr: $[variables.newVersionStr]
 
 # test artifact
 
@@ -59,12 +59,12 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files $(env:newVersionStr)'
+  displayName: 'Update new production version in files $(newVersionStr)'
   inputs:
     workingDir: scripts
     verbose: false
     command: custom
-    customCommand: 'run update:version -- --newVersion=$(env:newVersionStr)'
+    customCommand: 'run update:version -- --newVersion=$(newVersionStr)'
 
 - task: PowerShell@2
   displayName: 'Git: stage and commit generated files'
