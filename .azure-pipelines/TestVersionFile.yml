@@ -31,7 +31,7 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files $(testVar) $(NEW_VERSION_STRING)'
+  displayName: 'Update new production version in files $(testVar) $(env:NEW_VERSION_STRING)'
   inputs:
     workingDir: scripts
     verbose: false
