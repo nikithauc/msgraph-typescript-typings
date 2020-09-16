@@ -21,6 +21,9 @@ variables:
 
 # end test artifact 
 steps:
+- script: echo Hello, world! $(newVersionStr)
+  displayName: 'Run a one-line script'
+  
 - task: PowerShell@2
   displayName: 'Git: checkout master'
   inputs:
