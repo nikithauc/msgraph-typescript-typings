@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world! $(testVar)
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- task: PowerShell@2
+  #condition: eq(, '')
+  inputs:
+    filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
+
+- task: Npm@1
+  displayName: 'Install packges in the scripts folder'
+  inputs:
+    workingDir: scripts
+    verbose: false
+    command: install
+
+- task: Npm@1
+  displayName: 'Update new production version in files $(testVar) $(NEW_VERSION_STRING)'
+  inputs:
+    workingDir: scripts
+    verbose: false
+    command: custom
+    customCommand: 'run update:version -- --newVersion=$(NEW_VERSION_STRING)'
+
+
+
