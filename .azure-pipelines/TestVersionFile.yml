@@ -37,6 +37,7 @@ steps:
     verbose: false
     command: custom
     customCommand: 'run update:version -- --newVersion=$(NEW_VERSION_STRING)'
+    
 
 
 
