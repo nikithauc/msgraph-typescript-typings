@@ -3,7 +3,7 @@
 #     [string]$repo
 # )
 
-Write-Host "Calculating new Production Version:" -ForegroundColor Magenta;
+Write-Host "Calculating new Production Version: $(testVar)" -ForegroundColor Magenta;
 
 # $newVersionStr;
 
