@@ -1,7 +1,3 @@
-Param(
-    [string]$testVar
-}
-
 Write-Host "Calculating new Production Version: $($env:testVar)" -ForegroundColor Magenta;
 if(-Not $($env:testVar)){
     Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($env:testVar)"
