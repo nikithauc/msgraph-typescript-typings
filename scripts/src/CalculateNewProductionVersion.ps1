@@ -1,10 +1,12 @@
-# Param(
-#     [string]$owner,
-#     [string]$repo
-# )
+Param(
+    [string]$testVar
+}
 
-Write-Host "Calculating new Production Version: $($testVar)" -ForegroundColor Magenta;
-
+Write-Host "Calculating new Production Version: $($env:testVar)" -ForegroundColor Magenta;
+if(-Not $($env:testVar)){
+    Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($env:testVar)"
+    return;
+}
 # $newVersionStr;
 
 $releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases";
@@ -63,7 +65,7 @@ $versionArr[2] = $newPatchVersion;
 $env:newVersionStr = $versionArr -join ".";
 
 Write-Host "Current version is '$($latestReleaseVersionStr)'" -ForegroundColor Blue;
-Write-Host "New calculated version is '$($newVersionStr)'" -ForegroundColor Green;
+Write-Host "New calculated version is '$($env:newVersionStr)'" -ForegroundColor Green;
 
 Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($env:newVersionStr)";
 #Write-Output "::set-env name=NEW_VERSION_STRING::$newVersionStr"
