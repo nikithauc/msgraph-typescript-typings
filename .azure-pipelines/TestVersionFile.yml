@@ -25,7 +25,7 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    echo read ${{ variables.versionNum2 }} + '${{ variables['versionNum']}}'
+    echo read ${{ variables.versionNum2 }} + ${{ variables['versionNum']}}
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
