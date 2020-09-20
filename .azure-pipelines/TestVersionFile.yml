@@ -9,6 +9,11 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  ${{ if($testVar) }}: 
+    versionNum: $testVar
+  ${{ if -Not ($testVar) }}: 
+    versionNum:''
 steps:
 - script: echo Hello, world! $(testVar)
   displayName: 'Run a one-line script'
@@ -22,7 +27,7 @@ steps:
   displayName: 'Powershell task'
   #condition: eq(variables['testVar'], '')
   inputs:
-    arguments: -testVar "$(testVar)"
+    arguments: -testVar "${{ variables.versionNum }}"
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
 - task: Npm@1
