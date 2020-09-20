@@ -24,7 +24,7 @@ steps:
     echo '##vso[task.setvariable variable=versionNum1]$(versionNum2)'
     echo '##vso[task.setvariable variable=NEWNUM]$(versionNum2)'
   displayName: "use a conditional script to use "
-  condition: ne(variables.versionNum2, '') 
+  condition: ne(variables.testVar, '') 
 
 - script: |
     echo  ver 2 ${{variables.versionNum2}} 
