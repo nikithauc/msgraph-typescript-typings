@@ -11,9 +11,9 @@ pool:
 
 variables:
   versionNum2: $(testVar)
-  ${{ if variables['versionNum2'] }}: 
+  ${{ if ne(variables['versionNum2'], '') }}: 
     versionNum: $(testVar)
-  ${{ if not(variables['versionNum2']) }}: 
+  ${{ if eq(variables['versionNum2'], '') }}: 
     versionNum: ''
 steps:
 - script: echo Hello, world! $(testVar)
