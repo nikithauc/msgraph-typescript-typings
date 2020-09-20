@@ -10,12 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - name : versionNum
-    value: $(testVar)
-  #  ${{ if variables['testVar'] }}: 
-  #   versionNum: $(testVar)
-  #  ${{ if not(variables['testVar']) }}: 
-  #   versionNum: ''
+  versionNum2: $(testVar)
+  ${{ if variables['versionNum2'] }}: 
+    versionNum: $(testVar)
+  ${{ if not(variables['versionNum2']) }}: 
+    versionNum: ''
 steps:
 - script: echo Hello, world! $(testVar)
   displayName: 'Run a one-line script'
