@@ -11,7 +11,7 @@ pool:
 
 variables:
   # ${{ if $(testVar) }}: 
-    versionNum: $(testVar)
+    versionNum: $(testVar1)
   # ${{ if not($(testVar)) }}: 
 steps:
 - script: echo Hello, world! $(testVar)
