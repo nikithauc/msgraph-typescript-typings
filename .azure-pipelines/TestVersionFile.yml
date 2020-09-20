@@ -11,10 +11,6 @@ pool:
 
 variables:
   versionNum2: $(testVar)
-  ${{ if variables.versionNum2 }}: 
-    versionNum: $(testVar)
-  ${{ if ne(variables.versionNum2, '') }}: 
-    versionNum: ''
   
 #   ${{ if ne(variables.versionNum2, '') }}: 
 #     versionNum: $(testVar)
@@ -24,16 +20,16 @@ steps:
 - script: echo Hello, world! $(testVar)
   displayName: 'Run a one-line script'
 
-- script: |
-    echo read ${{ variables.versionNum2 }} + ${{ variables['versionNum']}}
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+- script: echo '##vso[task.setvariable variable=NEW_VERSION_STRING]$(versionNum2)'
+  displayName: "use a conditional script to use "
+  condition: 
 
 - task: PowerShell@2
   displayName: 'Powershell task'
-  #condition: eq(variables['testVar'], '')
+  condition: eq(variables.versionNum2, '')
   inputs:
-    arguments: -testVar "${{ variables.versionNum }}"
+    arguments: -testVar "$(NEW_VERSION_STRING)"
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
 - task: Npm@1
