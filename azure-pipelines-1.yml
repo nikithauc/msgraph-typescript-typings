@@ -37,13 +37,13 @@ steps:
   displayName: 'Run condition v2 ne'
   condition: ne(variables.versionNum2,'')
 
-- script: |
-    echo  ${{ if ne(variables.versionNum2, '') }}
-  displayName: 'Run condition v2 eq with if'
-  condition: ${{ if ne(variables.versionNum2, '') }}
+# - script: |
+#     echo  ${{ if ne(variables.versionNum2, '') }}
+#   displayName: 'Run condition v2 eq with if'
+#   condition: ${{ if ne(variables.versionNum2, '') }}
 
-- script: |
-    echo   ${{ if ne(variables.versionNum2, '') }}
-    echo  ver 1 ${{variables.versionNum1}}
-  displayName: 'Run condition v2 ne with if'
-  condition:  ${{ if ne(variables.versionNum2, '') }}
+# - script: |
+#     echo   ${{ if ne(variables.versionNum2, '') }}
+#     echo  ver 1 ${{variables.versionNum1}}
+#   displayName: 'Run condition v2 ne with if'
+#   condition:  ${{ if ne(variables.versionNum2, '') }}
