@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-   ${{ if (variables['testVar']) }}: 
+   ${{ if variables['testVar'] }}: 
     versionNum: $(testVar)
    ${{ if not(variables['testVar']) }}: 
     versionNum: ''
