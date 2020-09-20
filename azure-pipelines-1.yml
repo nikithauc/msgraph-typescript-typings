@@ -20,25 +20,29 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: echo '##vso[task.setvariable variable=versionNum1]$(versionNum2)'
+- script: |
+    echo '##vso[task.setvariable variable=versionNum1]$(versionNum2)'
+    echo '##vso[task.setvariable variable=NEWNUM]$(versionNum2)'
   displayName: "use a conditional script to use "
   condition: ne(variables.versionNum2, '') 
 
 - script: |
     echo  ver 2 ${{variables.versionNum2}} 
     echo  ver 1 ${{variables.versionNum1}}
+    echo  newnum 1 $(NEWNUM)
   displayName: 'Run condition v1 eq'
 
 - script: |
     echo  ver 2 ${{variables.versionNum2}} 
     echo  ver 1 ${{variables.versionNum1}}
+    echo  newnum 1 $(NEWNUM)
   displayName: 'Run condition v2 eq'
   condition: eq(variables.versionNum2, '') 
 
 - script: |
     echo  ver 2 ${{variables.versionNum2}} 
     echo  ver 1 ${{variables.versionNum1}}
-    echo  ver 1 $(variables.versionNum1)
+    
   displayName: 'Run condition v2 ne'
   condition: ne(variables['versionNum2'], '')
 
