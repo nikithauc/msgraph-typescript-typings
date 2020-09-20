@@ -29,13 +29,13 @@ steps:
     echo  ver 2 ${{variables.versionNum2}} 
     echo  ver 1 ${{variables.versionNum1}}
   displayName: 'Run condition v2 eq'
-  condition: or(eq(variables.versionNum2, NULL), eq(variables.versionNum2, '')) 
+  condition: eq(variables.versionNum2, '') 
 
 - script: |
     echo  ver 2 ${{variables.versionNum2}} 
     echo  ver 1 ${{variables.versionNum1}}
   displayName: 'Run condition v2 ne'
-  condition: and(ne(variables.versionNum2, NULL), ne(variables.versionNum2, ''))
+  condition: ne(variables['versionNum2'], '')
 
 # - script: |
 #     echo  ${{ if ne(variables.versionNum2, '') }}
