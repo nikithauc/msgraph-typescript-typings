@@ -23,7 +23,7 @@ steps:
 
 - script: echo '##vso[task.setvariable variable=NEW_VERSION_STRING]$(versionNum2)'
   displayName: "use a conditional script to use "
-  condition: 
+  condition: ne(variables.testVar, '') 
 
 - task: PowerShell@2
   displayName: 'Powershell task'
