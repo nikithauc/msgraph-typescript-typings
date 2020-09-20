@@ -19,7 +19,7 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: PowerShell@2
-  condition: $[eq(variables['testVar'], '')] 
+  condition: [eq(variables['testVar'], '')] 
   inputs:
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
