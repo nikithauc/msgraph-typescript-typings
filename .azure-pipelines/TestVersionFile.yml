@@ -11,10 +11,15 @@ pool:
 
 variables:
   versionNum2: $(testVar)
-  ${{ if ne(variables.versionNum2, '') }}: 
+  ${{ if variables.versionNum2 }}: 
     versionNum: $(testVar)
-  ${{ if eq(variables.versionNum2, '') }}: 
+  ${{ if ne(variables.versionNum2, '') }}: 
     versionNum: ''
+  
+#   ${{ if ne(variables.versionNum2, '') }}: 
+#     versionNum: $(testVar)
+#   ${{ if eq(variables.versionNum2, '') }}: 
+#     versionNum: ''
 steps:
 - script: echo Hello, world! $(testVar)
   displayName: 'Run a one-line script'
