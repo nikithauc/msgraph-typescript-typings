@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  versionNum2: $(testVar)
+  ${{ if variables.versionNum2 }}: 
+    versionNum1: $(testVar)
+  ${{ if ne(variables.versionNum2, '') }}: 
+    versionNum1: ''
+steps:
+
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo  ver 2 ${{variables.versionNum2}} 
+    echo  ver 1 ${{variables.versionNum1}}
+  displayName: 'Run condition v1 eq'
+
+- script: |
+    echo  ver 2 ${{variables.versionNum2}} 
+    echo  ver 1 ${{variables.versionNum1}}
+  displayName: 'Run condition v2 eq'
+  condition: eq(variables.versionNum2,'')
+
+- script: |
+    echo  ver 2 ${{variables.versionNum2}} 
+    echo  ver 1 ${{variables.versionNum1}}
+  displayName: 'Run condition v2 ne'
+  condition: ne(variables.versionNum2,'')
+
+- script: |
+    echo  ${{ if ne(variables.versionNum2, '') }}
+  displayName: 'Run condition v2 eq with if'
+  condition: ${{ if ne(variables.versionNum2, '') }}
+
+- script: |
+    echo   ${{ if ne(variables.versionNum2, '') }}
+    echo  ver 1 ${{variables.versionNum1}}
+  displayName: 'Run condition v2 ne with if'
+  condition:  ${{ if ne(variables.versionNum2, '') }}
