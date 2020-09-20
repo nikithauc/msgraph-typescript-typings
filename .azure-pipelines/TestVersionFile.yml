@@ -22,6 +22,7 @@ steps:
   displayName: 'Powershell task'
   #condition: eq(variables['testVar'], '')
   inputs:
+    arguments: -testVar "$(testVar)"
     filePath: "$(System.DefaultWorkingDirectory)/scripts/src/CalculateNewProductionVersion.ps1"
 
 - task: Npm@1
