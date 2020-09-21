@@ -1,14 +1,14 @@
 
   
-Param(
-    [string]$testVar
-)
+# Param(
+#     [string]$testVar
+# )
 
-Write-Host "Calculating new Production Version: $($testVar)" -ForegroundColor Magenta;
-if($($testVar)){
-    Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($testVar)"
-    return;
-}
+# Write-Host "Calculating new Production Version: $($testVar)" -ForegroundColor Magenta;
+# if($($testVar)){
+#     Write-Host "##vso[task.setvariable variable=NEW_VERSION_STRING]$($testVar)"
+#     return;
+# }
 # $newVersionStr;
 
 $releasesUrl = "https://api.github.com/repos/microsoftgraph/msgraph-typescript-typings/releases";
