@@ -21,7 +21,7 @@ steps:
   displayName: 'Run a one-line script'
 
 
-- script: echo '##vso[task.setvariable variable=NEW_VERSION_STRING]$(versionNum2)'
+- script: echo '##vso[task.setvariable variable=NEW_VERSION_STRING]$(testVar)'
   displayName: "use a conditional script to use "
   condition: ne(variables.testVar, '') 
 
@@ -39,7 +39,7 @@ steps:
     command: install
 
 - task: Npm@1
-  displayName: 'Update new production version in files $(testVar) $(env:NEW_VERSION_STRING)'
+  displayName: 'Update new production version in files $(testVar) ${{ variables.NEW_VERSION_STRING }}'
   inputs:
     workingDir: scripts
     verbose: false
