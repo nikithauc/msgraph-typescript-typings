@@ -43,6 +43,8 @@ steps:
       displayName: 'Copy package.json'
 
     - script: |  # Config can be set in .npmrc
+        git config --global user.email "nikithauc@gmail.com"
+        git config --global user.name "nikitha chettiar"
         npm version patch --force
     # - script: |
     #       npm pack
