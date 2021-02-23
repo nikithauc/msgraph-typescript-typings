@@ -16,7 +16,7 @@ steps:
           npm install
       displayName: 'Install dependencies'
     - script:
-        version patch -m "Bump version to %s [skip ci]" --force
+        npm version minor -m "Bump version to %s [skip ci]" --force
         git push origin beta
     - script: |
           npm pack
