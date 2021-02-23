@@ -46,7 +46,7 @@ steps:
         git config --global user.email "nikithauc@gmail.com"
         git config --global user.name "nikitha chettiar"
         npm version patch --force
-        git push--force
+        git push --force
     # - script: |
     #       npm pack
     #   displayName: 'Package package'
