@@ -16,9 +16,9 @@ steps:
           npm install
       displayName: 'Install dependencies'
     - script:
-        npm version minor -m "Bump version to %s [skip ci]" --force
-        git push
-      displayName: 'Install dependencies'
+        npm version minor 
+        git status
+      displayName: 'minor version'
     - script: |
           npm pack
       displayName: 'Package package'
