@@ -15,9 +15,10 @@ steps:
     - script: |
           npm install
       displayName: 'Install dependencies'
-    - script:
+    - script: 
         npm version minor 
         git status
+      workingDirectory: $(Build.ArtifactStagingDirectory)
       displayName: 'minor version'
     - script: |
           npm pack
