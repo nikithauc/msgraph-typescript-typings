@@ -15,13 +15,13 @@ steps:
     - script: |
           npm install
       displayName: 'Install dependencies'
+    - script:
+        version patch -m "Bump version to %s [skip ci]" --force
+        git push origin beta
     - script: |
           npm pack
       displayName: 'Package package'
     
-    - script:
-        npm version minor --force
-        git push origin beta
     - task: CopyFiles@2
       inputs:
           contents: '*.tgz'
