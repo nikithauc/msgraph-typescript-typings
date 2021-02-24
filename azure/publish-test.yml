@@ -46,6 +46,7 @@ steps:
         git config --global user.email "nikithauc@gmail.com"
         git config --global user.name "nikitha chettiar"
         npm version patch --force
+        npm version
         # git push origin azure
     # - script: |
     #       npm pack
