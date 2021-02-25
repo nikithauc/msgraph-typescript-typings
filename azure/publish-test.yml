@@ -1,5 +1,5 @@
 trigger:
-    - beta
+  - beta
 
 pr: none
 
@@ -7,28 +7,39 @@ pool:
     vmImage: 'ubuntu-latest'
 
 steps:
-    - task: NodeTool@0
-      inputs:
-          versionSpec: '10.x'
-      displayName: 'Install Node.js'
+- script: git checkout beta
+- task: CopyFiles@2
+  displayName: 'Copy Files to staging directory'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+     **/*
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
 
-    - script: |
-          npm install
-      displayName: 'Install dependencies'
+  #   - task: NodeTool@0
+  #     inputs:
+  #         versionSpec: '10.x'
+  #     displayName: 'Install Node.js'
+
+  #   - script: |
+  #         npm install
+  #     displayName: 'Install dependencies'
       
 
-    - script: |
-            npm version ${{ variables.version }}
-      displayName: 'set manual'
-      condition: ne('${{ variables.version }}', '')
-    - script: |
-           # Config can be set in .npmrc
-            git config --global user.email "nikithauc@gmail.com"
-            git config --global user.name "nikitha chettiar"
-            npm version prerelease --preid=preview
-            npm version
-      displayName: 'set auto'
-      condition: eq('${{ variables.version }}', '')
+  #   - script: |
+  #           npm version ${{ variables.version }}
+  #     displayName: 'set manual'
+  #     condition: ne('${{ variables.version }}', '')
+  #   - script: |
+  #          # Config can be set in .npmrc
+  #           git config --global user.email "nikithauc@gmail.com"
+  #           git config --global user.name "nikitha chettiar"
+  #           npm version prerelease --preid=preview
+  #           npm version
+  #     displayName: 'set auto'
+  #     condition: eq('${{ variables.version }}', '')
 
     # - script: 
     #     npm version minor 
